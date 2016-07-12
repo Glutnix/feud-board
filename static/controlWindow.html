@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Feud Board Control Window</title>
+  <link rel="stylesheet" :href="stylesheet">
+</head>
+<body>
+
+<button id="click">click</button>
+
+<script>
+  function sendMessage(event, data) {
+    window.opener.postMessage([event, data], '*');
+  }
+  document.addEventListener('DOMContentLoaded', function () {
+    sendMessage('console', 'hello world');
+    document.querySelector('#click').addEventListener('click', function () {
+      sendMessage('revealTile', 1);
+    });
+  });
+</script>
+
+</body>
+</html>

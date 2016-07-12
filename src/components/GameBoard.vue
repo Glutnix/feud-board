@@ -22,6 +22,12 @@ export default {
   components: {
     'game-board-tile': GameBoardTile,
   },
+
+  events: {
+    revealTile(answerNumber) {
+      console.log(`revealing ${answerNumber}`); // eslint-disable-line no-console
+    },
+  },
 };
 </script>
 
