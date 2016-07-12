@@ -5,3 +5,15 @@ npm-debug.log
 selenium-debug.log
 test/unit/coverage
 test/e2e/reports
+*.iml
+*.ipr
+*.iws
+.idea/dataSources.ids
+.idea/dataSources.xml
+.idea/dictionaries
+.idea/dynamic.xml
+.idea/shelf
+.idea/sqlDataSources.xml
+.idea/tasks.xml
+.idea/uiDesigner.xml
+.idea/workspace.xml
