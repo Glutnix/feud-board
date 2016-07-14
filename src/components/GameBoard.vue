@@ -16,34 +16,34 @@
 </template>
 
 <script>
-import GameBoardTile from './GameBoardTile';
+  import GameBoardTile from './GameBoardTile';
 
-export default {
-  components: {
-    'game-board-tile': GameBoardTile,
-  },
-
-  events: {
-    revealTile(answerNumber) {
-      console.log(`revealing ${answerNumber}`); // eslint-disable-line no-console
+  export default {
+    components: {
+      'game-board-tile': GameBoardTile,
     },
-  },
-};
+
+    events: {
+      revealTile(answerNumber) {
+        console.log(`revealing ${answerNumber}`); // eslint-disable-line no-console
+      },
+    },
+  };
 </script>
 
 <style>
 
-.GameBoard {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  vertical-align: center;
-  width: 100%;
-  border: .5rem solid #000;
-}
+  .GameBoard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: center;
+    width: 100%;
+    border: .5rem solid #000;
+  }
 
-.column {
-  flex: 1;
-}
+  .column {
+    flex: 1;
+  }
 
 </style>
