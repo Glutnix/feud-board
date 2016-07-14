@@ -46,7 +46,7 @@ if (!window.name) {
       openControlWindow() {
         if (this.controlWindow == null || this.controlWindow.closed) {
           const url = 'controlWindow.html';
-          const windowFeatures = 'width=420,height=230,resizable,scrollbars,status';
+          const windowFeatures = 'width=600,height=350,resizable,scrollbars,status';
           this.controlWindow = window.open(url, 'FeudBoardControlWindow', windowFeatures);
         } else {
           // this.controlWindow.refresh();
