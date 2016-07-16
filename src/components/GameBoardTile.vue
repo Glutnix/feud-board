@@ -1,14 +1,14 @@
 <template>
-  <div class="GameBoardTile" @click.stop.prevent="reveal">
+  <div class="GameBoardTile">
     <div v-if="hidden" class="GameBoardTile--hidden">
       {{ answerNumber }}
     </div>
     <div v-if="! hidden" transition="flip" class="GameBoardTile--revealed animated">
       <div class="GameBoardTile__answer">
-        {{ answer }}
+        {{ answer.answer }}
       </div>
       <div class="GameBoardTile__score">
-        {{ points }}
+        {{ answer.points }}
       </div>
     </div>
   </div>
@@ -21,22 +21,12 @@
         required: true,
       },
       answer: {
-        type: String,
-        required: true,
-      },
-      points: {
+        type: Object,
         required: true,
       },
       hidden: {
         type: Boolean,
-        default() {
-          return true;
-        },
-      },
-    },
-    methods: {
-      reveal() {
-        this.hidden = !this.hidden;
+        required: true,
       },
     },
   };

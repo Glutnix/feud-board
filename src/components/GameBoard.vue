@@ -1,25 +1,26 @@
 <template>
-  <div class="GameBoard">
-    <div class="column">
+  <div class="GameBoard" :class="{ 'GameBoard--setting-up': ! answers }">
+    <div class="column" v-if="answerSet">
       <game-board-tile v-for="n in 4"
                        :answer-number="n + 1"
-                       :answer="answers[n].answer"
-                       :points="answers[n].points"
-                       :hidden="answers[n].hidden"
+                       :answer="answerSet.answers[n]"
+                       :hidden="answerIsHiddenSet[n]"
       ></game-board-tile>
     </div>
-    <div class="column">
+    <div class="column" v-if="answerSet">
       <game-board-tile v-for="n in 4"
                        :answer-number="n + 5"
-                       :answer="answers[n+4].answer"
-                       :points="answers[n+4].points"
-                       :hidden="answers[n+4].hidden"
+                       :answer="answerSet.answers[n + 4]"
+                       :hidden="answerIsHiddenSet[n + 4]"
       ></game-board-tile>
+    </div>
+    <div v-else>
+      <p>Setting up...</p>
     </div>
   </div>
 </template>
 
-<script>
+<script lang="babel">
   import GameBoardTile from './GameBoardTile';
 
   export default {
@@ -29,29 +30,44 @@
 
     data() {
       return {
-        answers: [
-          { answer: 'Taking Driving Lane', points: 32, hidden: true },
-          { answer: 'Cut You Off', points: 18, hidden: true },
-          { answer: 'Everything', points: '', hidden: true },
-          { answer: 'Run Red Light', points: 8, hidden: true },
-          { answer: 'Pull Out In Front', points: 6, hidden: true },
-          { answer: 'Ride Slowly', points: 5, hidden: true },
-          { answer: 'Ring Bell', points: 4, hidden: true },
-          { answer: 'Wear Lycra', points: 3, hidden: true },
-        ],
+        answerSet: null,
+        answerIsHiddenSet: null,
+
       };
+    },
+
+    computed: {
+      answers() {
+        if (! this.answerSet) {
+          return null;
+        }
+        return this.answerSet.answers;
+      },
     },
 
     events: {
       revealTile(answerNumber) {
-        console.log(`revealing ${answerNumber}`); // eslint-disable-line no-console
-        this.answers[answerNumber - 1].hidden = false;
+        console.log(`revealTile ${answerNumber}`); // eslint-disable-line no-console
+        this.answerIsHiddenSet.$set([answerNumber - 1], false);
+      },
+      newAnswerSet(answerSet) {
+        this.answerSet = answerSet;
+        this.answerIsHiddenSet = [true, true, true, true, true, true, true, true];
+      },
+    },
+
+    methods: {
+      getAnswer(index) {
+        if (! this.answerSet || ! this.answerSet.answers[index]) {
+          return { answer: '', points: '' };
+        }
+        return this.answerSet.answers[index];
       },
     },
   };
 </script>
 
-<style>
+<style lang="scss">
 
   .GameBoard {
     display: flex;
@@ -60,6 +76,11 @@
     vertical-align: center;
     width: 100%;
     border: .5rem solid #000;
+
+    &--setting-up {
+      color: white;
+      border: none;
+    }
   }
 
   .column {

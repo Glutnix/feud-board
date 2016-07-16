@@ -1,0 +1,97 @@
+[
+  {
+    "name": "Things that Road Cyclists do",
+    "answers": [
+      {
+        "answer": "Taking Driving Lane",
+        "points": 32
+      },
+      {
+        "answer": "Cut You Off",
+        "points": 18
+      },
+      {
+        "answer": "Everything",
+        "points": ""
+      },
+      {
+        "answer": "Run Red Light",
+        "points": 8
+      },
+      {
+        "answer": "Pull Out In Front",
+        "points": 6
+      },
+      {
+        "answer": "Ride Slowly",
+        "points": 5
+      },
+      {
+        "answer": "Ring Bell",
+        "points": 4
+      },
+      {
+        "answer": "Wear Lycra",
+        "points": 3
+      }
+    ]
+  },
+  {
+    "name": "Name a word that most people yell at their dogs",
+    "answers": [
+      {
+        "answer": "No",
+        "points": 27
+      },
+      {
+        "answer": "Sit",
+        "points": 23
+      },
+      {
+        "answer": "Stop",
+        "points": 14
+      },
+      {
+        "answer": "Down",
+        "points": 7
+      },
+      {
+        "answer": "Fetch",
+        "points": 6
+      },
+      {
+        "answer": "Bad",
+        "points": 5
+      }
+    ]
+  },
+  {
+    "name": "Name something you might want to take for an overnight stay at a hospital",
+    "answers": [
+      {
+        "answer": "Pajamas",
+        "points": 29
+      },
+      {
+        "answer": "Clothing",
+        "points": 18
+      },
+      {
+        "answer": "Toothbrush",
+        "points": 17
+      },
+      {
+        "answer": "Robe",
+        "points": 12
+      },
+      {
+        "answer": "Book",
+        "points": 9
+      },
+      {
+        "answer": "Comb",
+        "points": 5
+      }
+    ]
+  }
+]

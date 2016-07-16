@@ -1,13 +1,14 @@
 <template>
   <div class="ControlWindowTile">
     <button class="ControlWindowTile__reveal" @click="reveal">{{ answerNumber }}</button>
-    <input class="ControlWindowTile__answer" type="text">
-    <input class="ControlWindowTile__points" type="number">
+    <input class="ControlWindowTile__answer" type="text" v-model="answer.answer">
+    <input class="ControlWindowTile__points" type="number" v-model="answer.points">
   </div>
 </template>
 <style lang="scss">
   .ControlWindowTile {
     display: flex;
+    margin: 1em .5em;
 
     &__reveal {
       flex: 2;
@@ -30,6 +31,9 @@
   export default {
     props: {
       answerNumber: {
+        required: true,
+      },
+      answer: {
         required: true,
       },
     },

@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import App from './App';
 
-if (!window.name) {
+if (! window.name) {
   Vue.transition('flip', {
     enterClass: 'flipInX',
     leaveClass: 'flipOutX',
@@ -39,6 +39,8 @@ if (!window.name) {
       },
 
       receiveMessage(event) {
+        if (! Array.isArray(event.data)) return;
+        console.log('recieveMessage', event); // eslint-disable-line no-console
         this.$emit(event.data[0], event.data[1]);
         this.$broadcast(event.data[0], event.data[1]);
       },
