@@ -14,6 +14,7 @@
 
 <style>
   @import url(https://fonts.googleapis.com/css?family=Oswald:700);
+  @import url(../node_modules/animate.css/animate.css);
 
   html {
     height: 100%;
