@@ -14,8 +14,10 @@
                        :hidden="answerIsHiddenSet[n + 4]"
       ></game-board-tile>
     </div>
-    <div v-else>
+    <div v-else class="SettingUp">
       <p>Setting up...</p>
+      <p class="PopupBlocked" v-cloak v-if="popupBlocked">(control window popup was blocked, unblock
+        and refresh)</p>
     </div>
   </div>
 </template>
@@ -33,6 +35,7 @@
         answerSet: null,
         answerIsHiddenSet: null,
 
+        popupBlocked: false,
       };
     },
 
@@ -53,6 +56,11 @@
       newAnswerSet(answerSet) {
         this.answerSet = answerSet;
         this.answerIsHiddenSet = [true, true, true, true, true, true, true, true];
+      },
+      popupBlocked() {
+        setTimeout(() => {
+          this.popupBlocked = true;
+        }, 1000);
       },
     },
 
@@ -85,6 +93,14 @@
 
   .column {
     flex: 1;
+  }
+
+  .SettingUp {
+    text-align: center;
+  }
+
+  .PopupBlocked {
+    font-size: .5em;
   }
 
 </style>

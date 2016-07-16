@@ -54,6 +54,17 @@ if (! window.name) {
           // this.controlWindow.refresh();
           this.controlWindow.focus();
         }
+        this.$nextTick(() => {
+          if (! this.controlWindow ||
+            this.controlWindow.closed ||
+            this.controlWindow.closed === undefined ||
+            this.controlWindow === undefined) {
+            if (this.controlWindow) {
+              this.controlWindow.close();
+            }
+            this.$broadcast('popupBlocked');
+          }
+        });
       },
     },
   });
