@@ -2,6 +2,10 @@
 
 > A stage scoreboard written in Vue.js
 
+## Credits
+Sound effects courtesy of Rainbow Sound, effectively CC-BY.
+https://www.youtube.com/channel/UC9033HmJhiHzjF_viQDHcNQ
+
 ## Build Setup
 
 ``` bash

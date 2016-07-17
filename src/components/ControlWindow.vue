@@ -20,6 +20,9 @@
     </div>
     <div class="">
       <button @click.stop.prevent="updateBoard" v-if="false">Reset and Send to Board</button>
+      <button class="StrikeButton" @click.stop.prevent="wrong(1)">☒</button>
+      <button class="StrikeButton" @click.stop.prevent="wrong(2)">☒</button>
+      <button class="StrikeButton" @click.stop.prevent="wrong(3)">☒</button>
     </div>
   </div>
 </template>
@@ -55,6 +58,11 @@
       width: 100%;
     }
   }
+
+  .StrikeButton {
+    font-size: 2em;
+    color: red;
+  }
 </style>
 
 <script>
@@ -68,7 +76,7 @@
     data() {
       return {
         currentAnswerSet: null,
-        answerSets: AnswerSets,
+        answerSets: this.loadAnswerSets(),
       };
     },
 
@@ -79,14 +87,27 @@
     },
 
     methods: {
+      loadAnswerSets() {
+        return JSON.parse(window.localStorage.getItem('answerSets')) || AnswerSets;
+      },
+
+      saveAnswerSets() {
+        window.localStorage.setItem('answerSets', JSON.stringify(this.answerSets));
+      },
+
       getAnswer(index) {
         if (! this.currentAnswerSet || ! this.currentAnswerSet.answers[index]) {
           return { answer: '', points: '' };
         }
         return this.currentAnswerSet.answers[index];
       },
+
       updateBoard() {
         this.$dispatch('sendMessage', ['newAnswerSet', this.currentAnswerSet]);
+      },
+
+      wrong(strikes) {
+        this.$dispatch('sendMessage', ['wrongAnswer', strikes]);
       },
     },
   };

@@ -1,13 +1,18 @@
 <template>
-  <game-board></game-board>
+  <div class="App">
+    <game-board></game-board>
+    <wrong-answer></wrong-answer>
+  </div>
 </template>
 
 <script>
   import GameBoard from './components/GameBoard';
+  import WrongAnswer from './components/WrongAnswer';
 
   export default {
     components: {
-      'game-board': GameBoard,
+      GameBoard,
+      WrongAnswer,
     },
   };
 </script>
@@ -26,12 +31,16 @@
     font-family: 'Oswald', sans-serif;
     font-weight: 700;
     font-size: 4em;
+    padding: 1em;
+    overflow: hidden;
+  }
+
+  .App {
     display: flex;
     align-items: center;
     justify-content: center;
     vertical-align: center;
-    padding: 1em;
-    overflow: hidden;
+    height: 100%;
   }
 
   * {

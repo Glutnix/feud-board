@@ -19,6 +19,7 @@
       <p class="PopupBlocked" v-cloak v-if="popupBlocked">(control window popup was blocked, unblock
         and refresh)</p>
     </div>
+    <audio v-el:sfx src="./static/sfx/correct.mp3"></audio>
   </div>
 </template>
 
@@ -52,6 +53,7 @@
       revealTile(answerNumber) {
         console.log(`revealTile ${answerNumber}`); // eslint-disable-line no-console
         this.answerIsHiddenSet.$set([answerNumber - 1], false);
+        this.playSound();
       },
       newAnswerSet(answerSet) {
         this.answerSet = answerSet;
@@ -70,6 +72,14 @@
           return { answer: '', points: '' };
         }
         return this.answerSet.answers[index];
+      },
+
+      playSound() {
+        if (window.muted) return;
+        this.$nextTick(() => {
+          this.$els.sfx.currentTime = 0;
+          this.$els.sfx.play();
+        });
       },
     },
   };
