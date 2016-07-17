@@ -31,6 +31,14 @@ if (! window.name) {
       console(data) {
         console.log(data); // eslint-disable-line no-console
       },
+
+      setMuted(state) {
+        window.muted = state;
+        if (window.muted) {
+          const audioElements = document.querySelectorAll('audio');
+          audioElements.forEach((audio) => audio.pause());
+        }
+      },
     },
 
     methods: {
@@ -40,7 +48,7 @@ if (! window.name) {
 
       receiveMessage(event) {
         if (! Array.isArray(event.data)) return;
-        console.log('recieveMessage', event); // eslint-disable-line no-console
+        console.log('recieveMessage', event.data); // eslint-disable-line no-console
         this.$emit(event.data[0], event.data[1]);
         this.$broadcast(event.data[0], event.data[1]);
       },

@@ -6,6 +6,7 @@
         <option :value="null">Load Answer Set…</option>
         <option v-for="answerSet in answerSets" :value="answerSet">{{ answerSet.name }}</option>
       </select>
+      <button @click.stop.prevent="updateBoard" v-if="false">Reset and Send to Board</button>
     </div>
 
     <div class="AnswerList">
@@ -18,16 +19,24 @@
                              :answer="getAnswer(n + 4)"></control-window-tile>
       </div>
     </div>
-    <div class="">
-      <button @click.stop.prevent="updateBoard" v-if="false">Reset and Send to Board</button>
+    <div class="EffectsButtons">
       <button class="StrikeButton" @click.stop.prevent="wrong(1)">☒</button>
       <button class="StrikeButton" @click.stop.prevent="wrong(2)">☒</button>
       <button class="StrikeButton" @click.stop.prevent="wrong(3)">☒</button>
+      <button @click.prevent.stop="toggleMuted" class="MuteToggle">
+        <span v-if="muted">🔇</span>
+        <span v-else>🔊</span>
+      </button>
     </div>
   </div>
 </template>
 
 <style lang="scss">
+  button {
+    border-radius: 6px;
+    background-color: #eee;
+  }
+
   .ControlWindow {
     display: flex;
     align-items: flex-start;
@@ -59,9 +68,21 @@
     }
   }
 
-  .StrikeButton {
+  .EffectsButtons {
+    width: 100%;
+    margin-top: .5em;
     font-size: 2em;
+    button {
+      font-size: 1em;
+    }
+  }
+
+  .StrikeButton {
     color: red;
+  }
+
+  .MuteToggle {
+    float: right;
   }
 </style>
 
@@ -77,6 +98,7 @@
       return {
         currentAnswerSet: null,
         answerSets: this.loadAnswerSets(),
+        muted: false,
       };
     },
 
@@ -85,6 +107,11 @@
         this.updateBoard();
       },
     },
+
+    ready() {
+      this.$dispatch('sendMessage', ['setMuted', false]);
+    },
+
 
     methods: {
       loadAnswerSets() {
@@ -108,6 +135,11 @@
 
       wrong(strikes) {
         this.$dispatch('sendMessage', ['wrongAnswer', strikes]);
+      },
+
+      toggleMuted() {
+        this.muted = ! this.muted;
+        this.$dispatch('sendMessage', ['setMuted', this.muted]);
       },
     },
   };
