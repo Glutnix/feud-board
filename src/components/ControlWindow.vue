@@ -34,6 +34,7 @@
         </button>
       </div>
     </div>
+    <p><a href="https://github.com/glutnix/feud-board" target="_blank">Feud Board on Github</a></p>
   </div>
 </template>
 
@@ -94,6 +95,12 @@
 
   .MuteToggle {
     margin-left: .5em;
+  }
+  a {
+    color: white;
+    :link, :hover, :focus, :visited {
+      color: white;
+    }
   }
 </style>
 
