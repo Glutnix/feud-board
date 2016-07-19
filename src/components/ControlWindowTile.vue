@@ -1,6 +1,6 @@
 <template>
   <div class="ControlWindowTile">
-    <button class="ControlWindowTile__reveal" @click="reveal">{{ answerNumber }}</button>
+    <button class="ControlWindowTile__reveal" @click="reveal" :title="'Reveal answer ' + answerNumber">{{ answerNumber }}</button>
     <input class="ControlWindowTile__answer" type="text" v-model="answer.answer">
     <input class="ControlWindowTile__points" type="number" v-model="answer.points">
   </div>
@@ -35,6 +35,7 @@
       },
       answer: {
         required: true,
+        twoWay: true,
       },
     },
 

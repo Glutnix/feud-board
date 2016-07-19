@@ -13,7 +13,7 @@
     right: 0;
     bottom: 0;
     text-align: center;
-    text-shadow: 0px 0px 32px #d22;
+    text-shadow: 0 0 32px #d22;
     color: #d22;
     font-size: 8em;
   }

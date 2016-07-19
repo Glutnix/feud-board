@@ -1,23 +1,20 @@
 <template>
   <div class="GameBoard" :class="{ 'GameBoard--setting-up': ! answers }">
     <div class="column" v-if="answerSet">
-      <game-board-tile v-for="n in 4"
-                       :answer-number="n + 1"
-                       :answer="answerSet.answers[n]"
+      <game-board-tile v-for="n in 4" :answer-number="n + 1" :answer="answerSet.answers[n]"
                        :hidden="answerIsHiddenSet[n]"
       ></game-board-tile>
     </div>
     <div class="column" v-if="answerSet">
-      <game-board-tile v-for="n in 4"
-                       :answer-number="n + 5"
-                       :answer="answerSet.answers[n + 4]"
+      <game-board-tile v-for="n in 4" :answer-number="n + 5" :answer="answerSet.answers[n + 4]"
                        :hidden="answerIsHiddenSet[n + 4]"
       ></game-board-tile>
     </div>
     <div v-else class="SettingUp">
-      <p>Setting up...</p>
-      <p class="PopupBlocked" v-cloak v-if="popupBlocked">(control window popup was blocked, unblock
-        and refresh)</p>
+      <p>⭐️ Feud Board ⭐️</p>
+      <p class="PopupBlocked" v-cloak v-if="popupBlocked">
+        (control window popup was blocked, unblock and refresh)
+      </p>
     </div>
     <audio v-el:sfx src="./static/sfx/correct.mp3"></audio>
   </div>
